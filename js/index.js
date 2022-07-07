@@ -12,7 +12,7 @@
       2. Add an Event listener for the submit button, which will display the score and highlight 
          the correct answers when the button is clicked. Use the code from lines 67 to 86 to help you.
 
-      3. Add 2 more questions to the app (each question must have 4 options).
+      3. Add 2 more questions to the app (each question must have 4 options). 
 
       4. Reload the page when the reset button is clicked (hint: search window.location)
 
@@ -24,6 +24,7 @@ window.addEventListener('DOMContentLoaded', () => {
   start.addEventListener('click', function (e) {
     document.querySelector('#quizBlock').style.display = 'block';
     start.style.display = 'none';
+
   });
   // quizArray QUESTIONS & ANSWERS
   // q = QUESTION, o = OPTIONS, a = CORRECT ANSWER
@@ -40,11 +41,23 @@ window.addEventListener('DOMContentLoaded', () => {
       a: 3,
     },
     {
-      q: 'What is the capital of Australia',
+      q: 'What is the capital of Australia?',
       o: ['Sydney', 'Canberra', 'Melbourne', 'Perth'],
       a: 1,
     },
+    {
+      q: 'Which country is known as the land of rising sun?',
+      o: ['Australia', 'Japan', 'China ', 'Canada'],
+      a: 1,
+    },
+    {
+      q: 'In which ocean Bermuda Triangle is located?',
+      o: ['Artic ', 'Indian', 'Pacific', 'Atlantic'],
+      a: 3,
+    },
   ];
+
+
 
   // function to Display the quiz questions and answers from the object
   const displayQuiz = () => {
@@ -76,15 +89,49 @@ window.addEventListener('DOMContentLoaded', () => {
 
         if (quizItem.a == i) {
           //change background color of li element here
+
         }
 
         if (radioElement.checked) {
-          // code for task 1 goes here
+          //code for task 1 goes here
+          
         }
       }
     });
+
+   
+
+
   };
 
   // call the displayQuiz function
   displayQuiz();
+
+
+
+  // (task-4, reset the page on reload )
+  const btnReset = document.getElementById('btnReset');
+  btnReset.addEventListener('click', function () {
+    window.location.reload();
+  });
+
+
+  // task-2
+
+   const btnSubmit = document.getElementById('btnSubmit');
+   btnSubmit.addEventListener('click', calculateScore());
+
+  // task-5 timmer
+  var count = 20;
+  var interval = setInterval(function () {
+    document.getElementById('time').innerHTML = count;
+    count--;
+    if (count === 0) {
+      clearInterval(interval);
+      document.getElementById('time').innerHTML = 'Done';
+      
+      alert("You're out of time!");
+    }
+  }, 1000);
+
 });
